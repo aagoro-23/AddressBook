@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>Python Flask Administrate App</title>
+	<!-- Importing bootstrap to format css -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<meta name ="viewport" content="width = device-width, initial-scale=1">
+ 
+</head>
+ 
+<body>
+	<!-- Title -->
+	<div class="container">
+		<div class="page-header">
+			<h1>Administrate Address Book!</h1>
+		</div>
+	</div>
+	
+	
+	<div class="container">
+		<form method ="POST" action="/search" >
+			<div class="form-group">
+				Search<input  type="text" name="result" class="form-control"/>
+			<br>
+			<button type="submit" class ="btn btn-primary">Search</button>
+				
+	</div>
+	<div>
+	
+	
+	<!--Creating the link button to take us to the form to add an entry -->
+	<div class="container">
+		<a href="/add" class="btn btn-primary" role="button" >Add entry</a>
+	</div>
+	
+	<div class="container">	
+			<table border = 1 class="table">
+				<thead>	
+					<th scope="col">Organisation</th>
+					<th scope="col">Name</th>
+					<th scope="col">Email</th>
+					<th scope="col">Phone Number</th>	
+					<th scope="col">Edit</th>	
+					<th scope="col">Delete</th>	
+			</thead>
+	<!-- Table with loop to add all contacts with their details in it -->		
+			<tbody>>
+				{% for item in data%}
+				<tr>
+					<td> {{item[0]}} </td>
+					<td> {{item[1]}} </td>
+					<td> {{item[2]}} </td>
+					<td> {{item[3]}} </td>
+	<!-- Button that takes us to the edit form -->
+					<td><a href="/edit/{{item[4]}}" class="btn btn-primary" role="button">Edit</a>
+	<!-- Button that deletes an entry -->
+					<td><a href="/delete/{{item[4]}}" class="btn btn-danger" role="button">DELETE</a>
+					</tr>
+				{% endfor %}
+			</tbody>
+			</table>
+	</div>
+		
+				
+</body>
+ 
+</html>
+					
